@@ -1,0 +1,38 @@
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script language="javascript" type="text/javascript">
+
+  function insureSPServices(callbackFunction) {
+    if($().SPServices == null) {
+      // If SPServices has not been loaded, this will return as a null value and let us know we need to load the library. The jQuery
+      // getScript method runs asynchronously, so we use the callback function for initial calls to the service
+      jQuery.getScript("//cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.02/jquery.SPServices-2014.02.min.js", callbackFunction);
+    } else {
+      // SPServices is already loaded, so execute our callback function which contains the rest of the page initialization.
+      callbackFunction.call(null, "Already Loaded");
+    }
+  }
+
+  function InitializePage(data, textStatus) {
+    var thisSite = $().SPServices.SPGetCurrentSite();
+    console.log("current site: ", thisSite);
+    $().SPServices({
+      webURL: "https://cardinalsolutionsrtp.sharepoint.com/sites/ncdot2/About",
+      operation: "GetListItems",
+      async: true,
+      listName: "Isotope",
+      CAMLViewFields: "<ViewFields><FieldRef Name='Title' /></ViewFields>",
+      completefunc: function (xData, Status) {
+        $(xData.responseXML).SPFilterNode("z:row").each(function() {
+          var liHtml = "<li>" + $(this).attr("ows_Title") + "</li>";
+          $("#newsUL").append(liHtml);
+        });
+      }
+    });
+  }
+
+  $(function() {
+    insureSPServices(InitializePage);
+  });
+
+</script>
+<ul id="newsUL"/>

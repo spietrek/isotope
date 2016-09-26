@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NCDOT Examples</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="ncdot.css">
+  <script>
+  var L_Menu_BaseUrl = "https://cardinalsolutionsrtp.sharepoint.com/sites/ncdot2/About";
+  var _spPageContextInfo = {
+    webServerRelativeUrl: "https://cardinalsolutionsrtp.sharepoint.com/sites/ncdot2/About",
+    webAbsoluteUrl: "https://cardinalsolutionsrtp.sharepoint.com/sites/ncdot2/About",
+    siteAbsoluteUrl: "https://cardinalsolutionsrtp.sharepoint.com/sites/ncdot2/About",
+    userId: 9,
+    userLoginName: "spietrek@cardinalsolutionsrtp.onmicrosoft.com"
+  };
+
+  </script>
+</head>
+
+<body>
+  <div class="page">
+    <div class="container">
+      <div class="three-fourth content-container js-page-content">
+        <div class="primary-content">
+          <!--<h1>Handlebars</h1>-->
+          <!--<div class="content-placeholder"></div>-->
+          <div class="interior-content">
+            <h1>News & Community</h1>
+            <div id="pnlSocialGridContainer" class="social-grid">
+              <nav class="social-filter-nav grid-context">
+                <ul>
+                  <li>
+                    <a class="button social-button social-all selected" data-filter="*">
+                      <span aria-hidden="true" class="fa fa-refresh"></span>
+                      <span class="label">All</span>
+                    </a>
+                  </li>
+                  <li><span class="separator"></span></li>
+                  <li>
+                    <a class="button social-button social-news" data-filter=".block-news">
+                      <span aria-hidden="true" class="fa fa-comment"></span>
+                      <span class="label">News</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="button social-button social-video" data-filter=".block-video">
+                      <span aria-hidden="true" class="fa fa-video-camera"></span>
+                      <span class="label">Video</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="button social-button social-events" data-filter=".block-events">
+                      <span aria-hidden="true" class="fa fa-calendar"></span>
+                      <span class="label">Events</span>
+                    </a>
+                  </li>
+                  <li><span class="separator"></span></li>
+                  <li>
+                    <a class="button social-button social-facebook" data-filter=".block-facebook">
+                      <span aria-hidden="true" class="fa fa-facebook"></span>
+                      <span class="u-hide-desktop">Facebook</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="button social-button social-instagram" data-filter=".block-instagram">
+                      <span aria-hidden="true" class="fa fa-instagram"></span>
+                      <span class="u-hide-desktop">Instagram</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="button social-button social-twitter" data-filter=".block-twitter">
+                      <span aria-hidden="true" class="fa fa-twitter"></span>
+                      <span class="u-hide-desktop">Twitter</span>
+                    </a>
+                  </li>
+                  <li class="stretch"></li>
+                </ul>
+              </nav>
+              <div data-content>
+                <div id="pnlGrid" class="blocks">
+                </div>
+                <div id="pnlGridStaging" style="display:none"></div>
+                <div id="pnlCommunitySpinner">
+                  <img src="spinner.gif" />
+                </div>
+              </div>
+              <div class="grid-loader">
+                <button type="button" id="btnLoadMore">Load more</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.SPServices/2014.02/jquery.SPServices.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js"></script>
+  <script src="app.js"></script>
+  <script src="ncdotfeed.js"></script>
+  <script src="ncdot.js"></script>
+</body>
+
+</html>

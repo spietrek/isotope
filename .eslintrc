@@ -1,0 +1,48 @@
+/* http://eslint.org/docs/rules/ */
+{
+  "env": {
+    "browser": true,
+    "es6": false,
+    "jasmine": true,
+    "node": true
+  },
+  "rules": {
+    "camelcase": 2,
+    "consistent-return": 0,
+    "curly": [2, "all"],
+    "dot-notation": 2,
+    "eol-last": 2,
+    "eqeqeq": 2,
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "max-len": [2, 180, 4],
+    "new-cap": [2, {"capIsNew": false}],
+    "no-eq-null": 2,
+    "no-mixed-spaces-and-tabs": 2,
+    "no-multiple-empty-lines": [2, {"max": 2}],
+    "no-trailing-spaces": 0,
+    "no-use-before-define": [2, "nofunc"],
+    "no-undef": 2,
+    "no-underscore-dangle": 0,
+    "no-unused-vars": 2,
+    "no-var": 0,
+    "object-curly-spacing": [0, "always"],
+    "quotes": [2, "double"],
+    "react/display-name": 0,
+    "react/jsx-boolean-value": 0,
+    "jsx-quotes": 2,
+    "semi": [2, "always"],
+    "space-before-blocks": [2, "always"],
+    "space-before-function-paren": [0, "always"],
+    "keyword-spacing": 2,
+    "strict": 0,
+    "vars-on-top": 0,
+    "no-warning-comments": [1, {
+      "terms": ["todo", "fixme"], "location": "anywhere"
+    }]
+  },
+  "globals": {
+    "angular": true,
+    "$": true,
+    "Handlebars": true
+  }
+}
