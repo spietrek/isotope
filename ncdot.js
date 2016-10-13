@@ -107,6 +107,8 @@ $(function() {
     currentPosition = "";
     totalItems = 0;
     currentItems = 0;
+    $("#pnlCommunitySpinner").show();
+    $(".grid-loader").show();
   }
 
   $(".button.social-button").each(function(i, buttonGroup) {
