@@ -32,44 +32,6 @@ function getTotalItems() {
   });
 }
 
-// function getFirstPosition() {
-//   $().SPServices({
-//     webURL: "https://cardinalsolutionsrtp.sharepoint.com/sites/ncdot2/About",
-//     operation: "GetListItems",
-//     async: false,
-//     listName: "Isotope",
-//     CAMLQuery: getQuery(),
-//     CAMLViewFields: "<ViewFields><FieldRef Name='ID' /></ViewFields>",
-//     CAMLRowLimit: rowLimit,
-//     completefunc: function(xData) {
-//       firstPos = $(xData.responseXML).SPFilterNode("rs:data").attr("ListItemCollectionPositionNext");
-//     }
-//   });
-// }
-
-// function getNextPosition(pos) {
-//   try {
-//     pos = pos.replace(/&/g, "&amp;").replace(/'/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-//   } catch (e) {}
-
-//   $().SPServices({
-//     webURL: "https://cardinalsolutionsrtp.sharepoint.com/sites/ncdot2/About",
-//     operation: "GetListItems",
-//     async: false,
-//     listName: "Isotope",
-//     CAMLQuery: getQuery(),
-//     CAMLQueryOptions: "<QueryOptions><Paging ListItemCollectionPositionNext='" + pos + "' /></QueryOptions>",
-//     CAMLRowLimit: rowLimit,
-//     completefunc: function(xData) {
-//       pos = $(xData.responseXML).SPFilterNode("rs:data").attr("ListItemCollectionPositionNext");
-//     }
-//   });
-//   try {
-//     pos = pos.replace(/&/g, "&amp;").replace(/'/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-//   } catch (e) {}
-//   return pos;
-// }
-
 function getItems() {
   $().SPServices({
     webURL: "https://cardinalsolutionsrtp.sharepoint.com/sites/ncdot2/About",
