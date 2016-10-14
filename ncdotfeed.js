@@ -115,9 +115,9 @@ NCDOTFeed.Items = function() {
 
             if (resourceLink) {
               output += "<a href='" + items[i].getUrl() + "' class='featured-image'>" +
-                "<img src='" + resourceLink + "' alt='" + items[i].getTitle() + "'>";
+                "<img src='" + resourceLink + "' alt='" + items[i].getTitle() + "'></a>";
             }
-            output += "</a>" +
+            output +=
               "<section class='metadata'>" +
               "<span class='category'>" +
               "<span aria-hidden='true' class='fa fa-comment'></span>" +
@@ -135,8 +135,8 @@ NCDOTFeed.Items = function() {
           case ".block-video":
             output += "<article class='social-block block-video'>" +
               "<div class='featured-image'>" +
-              "<iframe src='//player.vimeo.com/video/" + items[i].getResourceLink() + 
-                "?title=0&amp;byline=0&amp;portrait=0&amp;badge=0' width='245' height='200' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>" +
+              "<iframe src='//player.vimeo.com/video/" + items[i].getResourceLink() +
+              "?title=0&amp;byline=0&amp;portrait=0&amp;badge=0' width='245' height='200' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>" +
               "</div>" +
               "<section class='metadata'>" +
               "<span class='category'>" +
@@ -153,11 +153,13 @@ NCDOTFeed.Items = function() {
               "</article>";
             break;
           case ".block-facebook":
-            output += "<article class='social-block block-facebook'>" +
-              "<a class='featured-image' href='" + items[i].getUrl() + "'>" +
-              "<img alt='loading...' src='" + items[i].getResourceLink() + "'>" +
-              "</a>" +
-              "<section class='metadata'>" +
+            var resourceLink = items[i].getResourceLink();
+            output += "<article class='social-block block-facebook'>";
+            if (resourceLink) {
+              output += "<a href='" + items[i].getUrl() + "' class='featured-image'>" +
+                "<img src='" + resourceLink + "' alt='" + items[i].getTitle() + "'></a>";
+            }
+            output += "<section class='metadata'>" +
               "<span class='category'>" +
               "<span aria-hidden='true' class='fa fa-facebook'></span>" +
               "<span class='label'>Facebook</span>" +
@@ -171,11 +173,13 @@ NCDOTFeed.Items = function() {
               "</article>";
             break;
           case ".block-instagram":
-            output += "<article class='social-block block-instagram'>" +
-              "<a class='featured-image' href='" + items[i].getUrl() + "'>" +
-              "<img alt='loading...' src='" + items[i].getResourceLink() + "'>" +
-              "</a>" +
-              "<section class='metadata'>" +
+            var resourceLink = items[i].getResourceLink();          
+            output += "<article class='social-block block-instagram'>";
+            if (resourceLink) {
+              output += "<a href='" + items[i].getUrl() + "' class='featured-image'>" +
+                "<img src='" + resourceLink + "' alt='" + items[i].getTitle() + "'></a>";
+            }
+            output += "<section class='metadata'>" +
               "<span class='category'>" +
               "<span aria-hidden='true' class='fa fa-instagram'></span>" +
               "<span class='label'>Instagram</span>" +
@@ -189,40 +193,25 @@ NCDOTFeed.Items = function() {
               "</article>";
             break;
           case ".block-twitter":
-            if (items[i].getResourceLink()) {
-              output += "<article class='social-block block-twitter'>" +
-                "<a class='featured-image' href='" + items[i].getUrl() + "'>" +
-                "<img alt='loading...' src='" + items[i].getResourceLink() + "'>" +
-                "</a>" +
-                "<section class='metadata'>" +
-                "<span class='category'>" +
-                "<span aria-hidden='true' class='fa fa-twitter'></span>" +
-                "<span class='label'>Twitter</span>" +
-                "</span>" +
-                "<time>" + moment(items[i].getStart()).format("MMM D") + "</time>" +
-                "</section>" +
-                "<p class='excerpt'>" +
-                items[i].getDescription() +
-                "</p>" +
-                "<a target='_blank' href='" + items[i].getUrl() + "' class='read-more'>Read more</a>" +
-                "</article>";
-              break;
-            } else {
-              output += "<article class='social-block block-twitter'>" +
-                "<section class='metadata'>" +
-                "<span class='category'>" +
-                "<span aria-hidden='true' class='fa fa-twitter'></span>" +
-                "<span class='label'>Twitter</span>" +
-                "</span>" +
-                "<time>" + moment(items[i].getStart()).format("MMM D") + "</time>" +
-                "</section>" +
-                "<p class='excerpt'>" +
-                items[i].getDescription() +
-                "</p>" +
-                "<a target='_blank' href='" + items[i].getUrl() + "' class='read-more'>Read more</a>" +
-                "</article>";
-              break;
+            var resourceLink = items[i].getResourceLink();          
+            output += "<article class='social-block block-twitter'>";
+            if (resourceLink) {
+              output += "<a href='" + items[i].getUrl() + "' class='featured-image'>" +
+                "<img src='" + resourceLink + "' alt='" + items[i].getTitle() + "'></a>";
             }
+            output += "<section class='metadata'>" +
+              "<span class='category'>" +
+              "<span aria-hidden='true' class='fa fa-twitter'></span>" +
+              "<span class='label'>Twitter</span>" +
+              "</span>" +
+              "<time>" + moment(items[i].getStart()).format("MMM D") + "</time>" +
+              "</section>" +
+              "<p class='excerpt'>" +
+              items[i].getDescription() +
+              "</p>" +
+              "<a target='_blank' href='" + items[i].getUrl() + "' class='read-more'>Read more</a>" +
+              "</article>";
+            break;
         }
       }
       return output;
@@ -239,12 +228,27 @@ NCDOTFeed.Items = function() {
       var url = data.attr("ows_RR_IS_URL");
       var linkUrl = (url) ? url.split(", ")[1] : null;
       item.setUrl(linkUrl);
-      var image = data.attr("ows_RR_IS_ResourceLink");
+      //var image = data.attr("ows_RR_IS_ResourceLink");
+      var image = null;
       var imageUrl = image ? image : null;
-        //"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO0ZRNPTIsiy6YwdBB_dyDJI5l_Kw_VUGQoEsksZdeRZl8B797Vg";
       item.setResourceLink(imageUrl);
       item.setAddress(data.attr("ows_RR_IS_Address"));
       item.setCityStateZip(data.attr("ows_RR_IS_CityStateZip"));
+      items.push(item);
+    },
+    loadHardcode = function(data) {
+      var item = new NCDOTFeed.Item;
+      item.setType(data.itemType);
+      item.setTitle(data.title);
+      item.setDescription(data.description);
+      item.setStart(data.date);
+      var url = data.linkUrl;
+      var linkUrl = (url) ? url.split(", ")[1] : null;
+      item.setUrl(linkUrl);
+      var imageUrl = data.imageUrl ? data.imageUrl : null;
+      item.setResourceLink(imageUrl);
+      item.setAddress(data.address);
+      item.setCityStateZip(data.cityStateZip);
       items.push(item);
     },
     getItems = function() {
@@ -254,6 +258,7 @@ NCDOTFeed.Items = function() {
   return {
     clear: clear,
     load: load,
+    loadHardcode: loadHardcode,
     getItems: getItems,
     getHtmlItems: getHtmlItems
   };
