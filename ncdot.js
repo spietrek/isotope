@@ -62,7 +62,8 @@ function getItems() {
             layoutMode: "masonry",
             animationOptions: {
               duration: 500
-            }
+            }, 
+            filter: dataFilter
           });
           updateGridLoader();
         });
@@ -119,10 +120,17 @@ $(function() {
         $(this).removeClass("selected");
       });
       $(this).addClass("selected");
-      $("#pnlGrid").isotope("destroy");
+      //$("#pnlGrid").isotope("destroy");
       dataFilter = $buttonGroup.attr("data-filter");
-      initialize();
-      loadItems();
+      $("#pnlGrid").isotope({
+        layoutMode: "masonry",
+        animationOptions: {
+          duration: 500
+        }, 
+        filter: dataFilter
+      });
+      //initialize();
+      //loadItems();
     });
   });
 });
